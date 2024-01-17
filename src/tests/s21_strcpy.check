@@ -1,0 +1,96 @@
+#include <check.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "s21_string.h"
+
+#test strcpy_test_1
+    char b1[BUFF_SIZE] = "";
+    char b11[BUFF_SIZE] = "";
+    char str_1_2[BUFF_SIZE] = "LUGANO THE BEST!";
+    ck_assert_pstr_eq(strcpy(b1, str_1_2), s21_strcpy(b11, str_1_2));
+ 
+
+#test strcpy_test_2
+    char b2[BUFF_SIZE] = "";
+    char b22[BUFF_SIZE] = "";
+    char str_2_2[BUFF_SIZE] = "THE OF \0BEST!!";
+    ck_assert_pstr_eq(strcpy(b2, str_2_2), s21_strcpy(b22, str_2_2));
+ 
+
+ #test strcpy_test_3
+    char b3[BUFF_SIZE] = "777 ";
+    char b33[BUFF_SIZE] = "777 ";
+    char str_3_2[BUFF_SIZE] = "LUGANO!";
+    ck_assert_pstr_eq(strcpy(b3, str_3_2), s21_strcpy(b33, str_3_2));
+ 
+
+#test strcpy_test_4
+    char src[] = " floppa!!!";
+    char res[5 + 15] = "aboba ";
+    char expected[5 + 15] = "aboba ";
+    s21_strcpy(res, src);
+    strcpy(expected, src);
+    ck_assert_str_eq(res, expected);
+ 
+
+ #test strcpy_test_5
+    char src[] = "Floppa!!!";
+    char res[5 + 15] = "";
+    char expected[5 + 15] = "";
+    s21_strcpy(res, src);
+    strcpy(expected, src);
+    ck_assert_str_eq(res, expected);
+ 
+
+#test strcpy_test_6
+    char src[] = "";
+    char res[5 + 15] = "abobas";
+    char expected[5 + 15] = "abobas";
+    s21_strcpy(res, src);
+    strcpy(expected, src);
+    ck_assert_str_eq(res, expected);
+ 
+
+#test strcpy_test_7
+    char src[] = "";
+    char res[5 + 15] = "";
+    char expected[5 + 15] = "";
+    s21_strcpy(res, src);
+    strcpy(expected, src);
+    ck_assert_str_eq(res, expected);
+ 
+
+#test strcpy_test_8
+    char src[] = "1";
+    char res[5 + 15] = "";
+    char expected[5 + 15] = "";
+    s21_strcpy(res, src);
+    strcpy(expected, src);
+    ck_assert_str_eq(res, expected);
+ 
+
+#test strcpy_test_9
+    char src[] = " my dear friend\"";
+    char res[5 + 15] = "Hello";
+    char expected[5 + 15] = "Hello";
+    s21_strcpy(res, src);
+    strcpy(expected, src);
+    ck_assert_str_eq(res, expected);
+ 
+
+#test strcpy_test_10
+    char src[] = "ab\0ba";
+    char res[10 + 9] = "Gre\0t";
+    char expected[10 + 9] = "Gre\0t";
+    s21_strcpy(res, src);
+    strcpy(expected, src);
+    ck_assert_str_eq(res, expected);
+ 
+#test strcpy_test_11
+    char src[] = "ad[sofijpoiajsdf pj98981h23 p9h floppa!!!";
+    char res[49 + 42] = "as[oidjf paijsdf j9oqh2837o4h hUW auhduash W8awd";
+    char expected[49 + 42] = "as[oidjf paijsdf j9oqh2837o4h hUW auhduash W8awd";
+    s21_strcpy(res, src);
+    strcpy(expected, src);
+    ck_assert_str_eq(res, expected);

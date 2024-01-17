@@ -1,0 +1,33 @@
+#include <check.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "s21_string.h"
+
+#test strerror1
+int error_number = -5;
+ck_assert_str_eq(strerror(error_number), s21_strerror(error_number));
+
+#test strerror2
+int error_number = 0;
+ck_assert_str_eq(strerror(error_number), s21_strerror(error_number));
+
+#test strerror3
+int error_number = 5;
+ck_assert_str_eq(strerror(error_number), s21_strerror(error_number));
+
+#test strerror4
+int error_number = 13;
+ck_assert_str_eq(strerror(error_number), s21_strerror(error_number));
+
+#test strerror5
+int error_number = 41;
+ck_assert_str_eq(strerror(error_number), s21_strerror(error_number));
+
+#test strerror6
+int error_number = 101;
+ck_assert_str_eq(strerror(error_number), s21_strerror(error_number));
+
+#test strerror7
+int error_number = 150;
+ck_assert_str_eq(strerror(error_number), s21_strerror(error_number));

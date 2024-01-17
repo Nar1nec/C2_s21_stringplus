@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "s21_string.h"
+
+// memset
+
+#test memsetTest1
+    char str1[] = "Hello, world!";
+    char str2[] = "Hello, world!";
+    int ch = ' ';
+    s21_size_t n = strlen(str1);
+    ck_assert_pstr_eq(memset(str1, ch, n), s21_memset(str2, ch, n));
+
+#test memsetTest2
+    char str1[] = "Hello, world!";
+    char str2[] = "Hello, world!";
+    int ch = ' ';
+    s21_size_t n = 0;
+    ck_assert_pstr_eq(memset(str1, ch, n), s21_memset(str2, ch, n));
+
+#test memsetTest3
+    char str1[] = "Hello, world!";
+    char str2[] = "Hello, world!";
+    int ch = ' ';
+    s21_size_t n = 6;
+    ck_assert_pstr_eq(memset(str1, ch, n), s21_memset(str2, ch, n));
+
+#test memsetTest4
+    char str1[] = "Hello, world!";
+    char str2[] = "Hello, world!";
+    int ch = '!';
+    s21_size_t n = 10;
+    ck_assert_pstr_eq(memset(str1, ch, n), s21_memset(str2, ch, n));
+
+#test memsetTest5
+    char str1[] = "";
+    char str2[] = "";
+    int ch = '\0';
+    s21_size_t n = 0;
+    ck_assert_pstr_eq(memset(str1, ch, n), s21_memset(str2, ch, n));
+
+#test memsetTest6
+    char str1[] = "Hello, world!";
+    char str2[] = "Hello, world!";
+    int ch = 73;
+    s21_size_t n = 7;
+    ck_assert_pstr_eq(memset(str1, ch, n), s21_memset(str2, ch, n));
+
+#test memsetTest7
+    char str1[] = "Hello, world!";
+    char str2[] = "Hello, world!";
+    int ch = '\0';
+    s21_size_t n = 0;
+    ck_assert_pstr_eq(memset(str1, ch, n), s21_memset(str2, ch, n));
+
+#test memsetTest8
+    char str1[] = "lpokijuhygtfre456789098765rtfoskfalfmagggewesqwfghjkl;,)Dwq-";
+    char str2[] = "lpokijuhygtfre456789098765rtfoskfalfmagggewesqwfghjkl;,)Dwq-";
+    int ch = 's';
+    s21_size_t n = 15;
+    ck_assert_pstr_eq(memset(str1, ch, n), s21_memset(str2, ch, n));
+
+#test memsetTest9
+    char str1[] = "aboba";
+    char str2[] = "aboba";
+    int ch = '\n';
+    s21_size_t n = 1;
+    ck_assert_pstr_eq(memset(str1, ch, n), s21_memset(str2, ch, n));
+
+#test memsetTest10
+    char str1[] = "What is this, Alan?";
+    char str2[] = "What is this, Alan?";
+    int ch = '8';
+    s21_size_t n = 7;
+    ck_assert_pstr_eq(memset(str1, ch, n), s21_memset(str2, ch, n));
+
+#test memsetTest11
+    char str1[] = "aboba";
+    char str2[] = "aboba";
+    int ch = 'e';
+    s21_size_t n = 5;
+    ck_assert_pstr_eq(memset(str1, ch, n), s21_memset(str2, ch, n));
+
+#test memsetTest12
+    char str1[] = "1aboba\n";
+    char str2[] = "1aboba\n";
+    int ch = 'e';
+    s21_size_t n = 7;
+    ck_assert_pstr_eq(memset(str1, ch, n), s21_memset(str2, ch, n));

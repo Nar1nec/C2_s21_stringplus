@@ -1,0 +1,38 @@
+#include "s21_string.h"
+
+#test strspn1
+    char str1[]="0120123401";
+    char str2[]="210";
+    ck_assert_int_eq(strspn(str1,str2),s21_strspn(str1,str2));
+
+#test strspn2
+    char str1[]="0123456789";
+    char str2[]="";
+    ck_assert_int_eq(strspn(str1,str2),s21_strspn(str1,str2));
+
+#test strspn3
+    char str1[]="0123456789";
+    char str2[]="21";
+    ck_assert_int_eq(strspn(str1,str2),s21_strspn(str1,str2));
+
+#test strspn4
+    char str1[]="01234";
+    char str2[]="01234";
+    ck_assert_int_eq(strspn(str1,str2),s21_strspn(str1,str2));
+
+#test strspn5
+    char str1[]="0a1b2c34";
+    char str2[]="abc";
+    ck_assert_int_eq(strspn(str1,str2),s21_strspn(str1,str2));
+
+#test strspn6
+     char src[] = "32jersASDASDPare[0g9jf m07y271234567890";
+    char res[] = "1234567890qwertyuiopasdfghjklczxcvbnm";
+    ck_assert_int_eq(s21_strspn(res, src),
+                     strspn(res, src));
+
+#test strspn7
+    char src[] = "32ASDASDPare[0g9jf m07y271234567890";
+    char res[] = "0987654321";
+    ck_assert_int_eq(s21_strspn(res, src),
+                     strspn(res, src));

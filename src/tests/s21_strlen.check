@@ -1,0 +1,29 @@
+#include <check.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "s21_string.h"
+
+#test strlen_test1
+    char *str = "\0";
+    ck_assert_int_eq(strlen(str), s21_strlen(str));
+
+#test strlen_test2
+    char *str = "Hello \0Bworld!";
+    ck_assert_int_eq(strlen(str), s21_strlen(str));
+
+#test strlen_test3
+    char src[] = "987623456124678";
+    ck_assert_int_eq(strlen(src), s21_strlen(src));
+
+#test strlen_test4
+    char src[] = "8234t7yh3jeopfd9guhi3209u8rhufjnernow192urhwe";
+    ck_assert_int_eq(strlen(src), s21_strlen(src));
+
+#test strlen_test5
+    char src[] = "";
+    ck_assert_int_eq(strlen(src), s21_strlen(src));
+
+#test strlen_test6
+    char src[] = "String hhhhhhhh";
+    ck_assert_int_eq(strlen(src), s21_strlen(src));

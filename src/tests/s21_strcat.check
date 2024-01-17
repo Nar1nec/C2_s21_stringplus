@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "s21_string.h"
+
+// strcat
+
+#test strcatTest1
+    char dest1[30] = "Hello, world!";
+    char dest2[30] = "Hello, world!";
+    char src[] = "\0";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));
+
+#test strcatTest2
+    char dest1[30] = "Hello, world!";
+    char dest2[30] = "Hello, world!";
+    char src[] = "Hello, world!";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));
+
+#test strcatTest3
+    char dest1[30] = "Hello, world!";
+    char dest2[30] = "Hello, world!";
+    char src[] = "";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));
+
+#test strcatTest4
+    char dest1[30] = "Hello, world!";
+    char dest2[30] = "Hello, world!";
+    char src[] = "\nstring\t\n";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));
+
+#test strcatTest5
+    char dest1[30] = "Hello, world!";
+    char dest2[30] = "Hello, world!";
+    char src[] = "\n\0\n";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));
+
+#test strcatTest6
+    char dest1[30] = "";
+    char dest2[30] = "";
+    char src[] = "aboba";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));
+
+#test strcatTest7
+    char dest1[30] = "Hello\0world!";
+    char dest2[30] = "Hello\0world!";
+    char src[] = "world!";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));
+
+#test strcatTest8
+    char dest1[30] = "\0";
+    char dest2[30] = "\0";
+    char src[] = "aboba";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));
+
+#test strcatTest9
+    char dest1[30] = "";
+    char dest2[30] = "";
+    char src[] = "\0";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));
+
+#test strcatTest10
+    char dest1[30] = "hello,";
+    char dest2[30] = "hello,";
+    char src[] = " aboba";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));
+
+#test strcatTest11
+    char dest1[30] = "777";
+    char dest2[30] = "777";
+    char src[] = " LUCK!";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));
+
+#test strcatTest12
+    char dest1[30] = "777";
+    char dest2[30] = "777";
+    char src[] = " LUCK!";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));
+
+
+#test strcatTest13
+    char dest1[30] = "world!!!";
+    char dest2[30] = "world!!!";
+    char src[5 + 10] = "Hello";
+    ck_assert_str_eq(strcat(dest1, src), s21_strcat(dest2, src));

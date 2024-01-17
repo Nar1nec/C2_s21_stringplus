@@ -1,0 +1,25 @@
+#include <check.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "s21_string.h"
+
+#test strcspn1
+char str1[] = "1234567890", str2[] = "7890";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn2
+char str1[] = "1234567890", str2[] = "1";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn3
+char str1[] = "1234567890", str2[] = "";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn4
+char str1[] = "1234567890", str2[] = "#$%";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn5
+char str1[] = "AaAaAa", str2[] = "a";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));

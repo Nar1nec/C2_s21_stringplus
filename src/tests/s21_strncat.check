@@ -1,0 +1,105 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "s21_string.h"
+
+// strncat
+
+#test strncatTest1
+    char str1[30] = "Hello, world!";
+    char str2[30] = "Hello, world!";
+    char ch[] = "\0";
+    s21_size_t n = 1;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest2
+    char str1[30] = "Hello, world!";
+    char str2[30] = "Hello, world!";
+    char ch[] = "Hello, world!";
+    s21_size_t n = 1;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest3
+    char str1[30] = "Hello, world!";
+    char str2[30] = "Hello, world!";
+    char ch[] = "";
+    s21_size_t n = 0;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest4
+    char str1[30] = "Hello, world!";
+    char str2[30] = "Hello, world!";
+    char ch[] = "\nstring\t\n";
+    s21_size_t n = 3;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest5
+    char str1[30] = "Hello, world!";
+    char str2[30] = "Hello, world!";
+    char ch[] = "\n\0\n";
+    s21_size_t n = 4;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest6
+    char str1[30] = "";
+    char str2[30] = "";
+    char ch[] = "aboba";
+    s21_size_t n = 4;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest7
+    char str1[30] = "Hello\0world!";
+    char str2[30] = "Hello\0world!";
+    char ch[] = "abobaabobaaboba";
+    s21_size_t n = 13;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest8
+    char str1[30] = "\0";
+    char str2[30] = "\0";
+    char ch[] = "aboba";
+    s21_size_t n = 1;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest9
+    char str1[30] = "";
+    char str2[30] = "";
+    char ch[] = "";
+    s21_size_t n = 10;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest10
+    char str1[30] = "Hello, world!";
+    char str2[30] = "Hello, world!";
+    char ch[] = "\0\0\0";
+    s21_size_t n = 4;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest11
+    char str1[30] = "Hello, world!";
+    char str2[30] = "Hello, world!";
+    char ch[] = "Hellooooo";
+    s21_size_t n = 0;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest12
+    char str1[30] = "Hello,\0 world!";
+    char str2[30] = "Hello,\0 world!";
+    char ch[] = "Hell\0ooooo";
+    s21_size_t n = 0;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest13
+    char str1[30] = "";
+    char str2[30] = "";
+    char ch[] = "";
+    s21_size_t n = 0;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));
+
+#test strncatTest14
+    char str1[30] = "aboba";
+    char str2[30] = "aboba";
+    char ch[] = "aboba";
+    s21_size_t n = 1;
+    ck_assert_str_eq(strncat(str1, ch, n), s21_strncat(str2, ch, n));

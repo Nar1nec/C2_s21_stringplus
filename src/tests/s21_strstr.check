@@ -1,0 +1,36 @@
+#include "s21_string.h"
+
+#test strstr1
+    char str_1[] = "<<<5>>>";
+    char str_2[] = "5";
+    ck_assert_ptr_eq(s21_strstr(str_1, str_2), strstr(str_1, str_2));
+
+#test strstr2
+    char str_1[] = "HelloHelloHello";
+    char str_2[] = "Hello";
+    ck_assert_ptr_eq(s21_strstr(str_1, str_2), strstr(str_1, str_2));
+
+#test strstr3
+    char str_1[] = "Hello";
+    char str_2[] = "abcd";
+    ck_assert_ptr_eq(s21_strstr(str_1, str_2), strstr(str_1, str_2));
+    
+#test strstr4
+    char str_1[] = "abcd";
+    char str_2[] = "";
+    ck_assert_ptr_eq(s21_strstr(str_1, str_2), strstr(str_1, str_2));
+
+#test strstr5
+    char str_1[] = "aaaaa123aaa1234aaa";
+    char str_2[] = "1234";
+    ck_assert_ptr_eq(s21_strstr(str_1, str_2), strstr(str_1, str_2));
+
+#test strstr6
+    char str_1[] = "";
+    char str_2[] = "1234";
+    ck_assert_ptr_eq(s21_strstr(str_1, str_2), strstr(str_1, str_2));
+
+#test strstr7
+    char str_1[] = "-";
+    char str_2[] = "1234567890qwertyuiopasdfghjk-";
+    ck_assert_ptr_eq(s21_strstr(str_1, str_2), strstr(str_1, str_2));

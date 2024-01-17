@@ -1,0 +1,57 @@
+#include "s21_string.h"
+
+#test strtok1
+    char str4_1[] = "/testing/with/original/string.h/";
+    char str4_2[] = "/testing/with/original/string.h/";
+    char del4[3] = "/";
+    char * nstr_1, * nstr_2;
+    nstr_1 = strtok(str4_1, del4);
+    nstr_2 = s21_strtok(str4_2, del4);
+    while (nstr_1 != S21_NULL) {
+        ck_assert_pstr_eq(nstr_1, nstr_2);
+        nstr_1 = strtok(S21_NULL, del4);
+        nstr_2 = s21_strtok(S21_NULL, del4);
+        }
+
+#test strtok2
+    char str4_1[] = ". . testing with original string.h";
+    char str4_2[] = ". . testing with original string.h";
+    char del4[3] = ". ";
+    char * nstr_1, * nstr_2;
+    nstr_1 = strtok(str4_1, del4);
+    nstr_2 = s21_strtok(str4_2, del4);
+        while (nstr_1 != S21_NULL) {
+            ck_assert_pstr_eq(nstr_1, nstr_2);
+            nstr_1 = strtok(S21_NULL, del4);
+            nstr_2 = s21_strtok(S21_NULL, del4);
+        }
+
+#test strtok3
+    char str1[] = "1\023";
+    char str3[] = "1\023";
+    char str2[] = "2";
+    ck_assert_str_eq(strtok(str1, str2), s21_strtok(str3, str2));
+
+#test strtok4
+    char str4_1[] = "testing with original string.h";
+    char str4_2[] = "testing with original string.h";
+    char del4[3] = ". ";
+    char * nstr_1, * nstr_2;
+    nstr_1 = strtok(str4_1, del4);
+    nstr_2 = s21_strtok(str4_2, del4);
+        while (nstr_1 != S21_NULL) {
+            ck_assert_pstr_eq(nstr_1, nstr_2);
+            nstr_1 = strtok(S21_NULL, del4);
+            nstr_2 = s21_strtok(S21_NULL, del4);
+        }
+
+#test strtok5
+    char str1[] = "++++++++";
+    char str2[] = "++++++++";
+    const char delims[] = "+_! =";
+
+    char *got = s21_strtok(str1, delims);
+    char *expected = strtok(str2, delims);
+
+    ck_assert_ptr_null(got);
+    ck_assert_ptr_null(expected);

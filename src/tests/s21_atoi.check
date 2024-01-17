@@ -1,0 +1,23 @@
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "s21_string.h"
+
+#suite s21_atoi
+
+#test s21_atoi_1
+    ck_assert_int_eq(199, s21_atoi("199"));
+
+#test s21_atoi_digit_small_negative_int
+    ck_assert_int_eq(-199, s21_atoi("-199"));
+
+#test s21_atoi_d2
+    char max_int_as_str[100];
+    sprintf(max_int_as_str, "%d", INT_MAX);
+    ck_assert_int_eq(INT_MAX, s21_atoi(max_int_as_str));
+
+#test s21_atoi_3
+    char max_int_as_str[100];
+    sprintf(max_int_as_str, "%d", INT_MIN);
+    ck_assert_int_eq(INT_MIN, s21_atoi(max_int_as_str));

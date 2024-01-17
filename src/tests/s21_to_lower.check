@@ -1,0 +1,40 @@
+#include <check.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "s21_string.h"
+
+#test to_lower_test1
+    char str[] = "123456789Q";
+    char expected[] = "123456789q";
+    char *got = s21_to_lower(str);
+    ck_assert_str_eq(got, expected);
+    if (got) free(got);
+
+#test to_lower_test2
+    char str[] = "StrInG";
+    char expected[] = "string";
+    char *got = s21_to_lower(str);
+    ck_assert_str_eq(got, expected);
+    if (got) free(got);
+
+#test to_lower_test3
+    char str[] = "HELLO";
+    char expected[] = "hello";
+    char *got = s21_to_lower(str);
+    ck_assert_str_eq(got, expected);
+    if (got) free(got);
+
+#test to_lower_test4
+    char str[] = "world";
+    char expected[] = "world";
+    char *got = s21_to_lower(str);
+    ck_assert_str_eq(got, expected);
+    if (got) free(got);
+
+#test to_lower_test5
+    char str[] = "";
+    char expected[] = "";
+    char *got = s21_to_lower(str);
+    ck_assert_str_eq(got, expected);
+    if (got) free(got);

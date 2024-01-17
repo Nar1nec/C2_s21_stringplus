@@ -1,0 +1,65 @@
+#include <check.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "s21_string.h"
+
+#test memcmp_test_1
+    char str1[] = "aboba";
+    char str2[] = "aboba";
+    int n = 0;
+    ck_assert_int_eq(s21_memcmp(str1, str2, n), memcmp(str1, str2, n));
+
+#test memcmp_test_2
+    char str1[] = "aboba";
+    char str2[] = "aboba";
+    int n = 3;
+    ck_assert_int_eq(s21_memcmp(str1, str2, n), memcmp(str1, str2, n));
+
+#test memcmp_test_3
+    char str1[] = "aboba";
+    char str2[] = "Aboba";
+    int n = 1;
+    ck_assert_int_eq(s21_memcmp(str1, str2, n), memcmp(str1, str2, n));
+
+#test memcmp_test_4
+    char str1[] = "1";
+    char str2[] = "1";
+    int n = 0;
+    ck_assert_int_eq(s21_memcmp(str1, str2, n), memcmp(str1, str2, n));
+
+#test memcmp_test_5
+    char str1[] = "1";
+    char str2[] = "1234";
+    int n = 1;
+    ck_assert_int_eq(s21_memcmp(str1, str2, n), memcmp(str1, str2, n));
+
+#test memcmp_test_6
+    char str1[] = "1234";
+    char str2[] = "1234";
+    int n = 2;
+    ck_assert_int_eq(s21_memcmp(str1, str2, n), memcmp(str1, str2, n));
+
+#test memcmp_test_7
+    char str1[] = "13";
+    char str2[] = "1234";
+    int n = 2;
+    ck_assert_int_eq(s21_memcmp(str1, str2, n), memcmp(str1, str2, n));
+
+#test memcmp_test_8
+    char str1[] = "134567";
+    char str2[] = "1234";
+    int n = 2;
+    ck_assert_int_eq(s21_memcmp(str1, str2, n), memcmp(str1, str2, n));
+
+#test memcmp_test_9
+    char str1[] = "111111111111111111112312312312312312434524563567adsfe 4rafa ewfseASDASD";
+    char str2[] = "111111111111111111112312312312312312434524563567adsfe 4rafa ewfseASDASD";
+    int n = 71;
+    ck_assert_int_eq(s21_memcmp(str1, str2, n), memcmp(str1, str2, n));
+
+#test memcmp_test_10
+    char str1[] = "111111111111111111112312312312312312434524563567adsfe 4rafa ewfseASDASD";
+    char str2[] = "111111111111111111112312312312312312434524563567adsfe 4rafa ewfseASDASd";
+    int n = 71;
+    ck_assert_int_eq(s21_memcmp(str1, str2, n), memcmp(str1, str2, n));

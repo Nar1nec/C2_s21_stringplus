@@ -1,0 +1,26 @@
+#include "s21_string.h"
+
+#test strrchr1
+    char str[] = "01234535344";
+    int c = '3';
+    ck_assert_ptr_eq (strrchr(str,c), s21_strrchr(str,c));
+
+#test strrchr2
+    char str[] = "\0";
+    int c = '3';
+    ck_assert_ptr_eq (strrchr(str,c), s21_strrchr(str,c));
+
+#test strrchr3
+    char str[] = "012345";
+    int c = '6';
+    ck_assert_ptr_eq (strchr(str,c), s21_strchr(str,c));
+
+#test strrchr4
+    char str[] = "012345";
+    int c = '\0';
+    ck_assert_ptr_eq (strchr(str,c), s21_strchr(str,c));
+
+#test strrchr5
+    char str[] = "hello";
+    int c = 'l';
+    ck_assert_ptr_eq (strchr(str,c), s21_strchr(str,c));

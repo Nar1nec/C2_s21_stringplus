@@ -1,0 +1,72 @@
+#include <check.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "s21_string.h"
+
+#test memchr_test_1
+    char str[] = "Hello, world!";
+    ck_assert_ptr_eq(memchr(str, 'H', strlen(str)),s21_memchr(str, 'H', strlen(str)));
+
+#test memchr_test_0
+    s21_size_t n_byte = 0;
+    char str[10] = "";
+    int find_byte = '\0';
+    ck_assert_ptr_eq(s21_memchr(str, find_byte, n_byte),
+                        memchr(str, find_byte, n_byte));
+
+#test memchr_test_11
+    s21_size_t n_byte = 7;
+    char str[10] = "string";
+    int find_byte = '\0';
+    ck_assert_ptr_eq(s21_memchr(str, find_byte, n_byte),
+                        memchr(str, find_byte, n_byte));
+
+#test memchr_test_2
+    s21_size_t n_byte = 6;
+    char str[10] = "Atring";
+    int find_byte = 'A';
+    ck_assert_ptr_eq(s21_memchr(str, find_byte, n_byte),
+                     memchr(str, find_byte, n_byte));
+
+#test memchr_test_3
+    s21_size_t n_byte = 7;
+    char str[10] = "StringA";
+    int find_byte = 'A';
+    ck_assert_ptr_eq(s21_memchr(str, find_byte, n_byte),
+                     memchr(str, find_byte, n_byte));
+
+#test memchr_test_4
+    s21_size_t n_byte = 15;
+    char str[16] = "Str55333222ingA";
+    int find_byte = '3';
+    ck_assert_ptr_eq(s21_memchr(str, find_byte, n_byte),
+                     memchr(str, find_byte, n_byte));
+
+#test memchr_test_6
+    float array[] = {1, 2, 3, 666, 5, 99, 100};
+    s21_size_t n_byte = sizeof(float) * 7;
+    int find_byte = 666;
+    ck_assert_ptr_eq(s21_memchr(array, find_byte, n_byte),
+                     memchr(array, find_byte, n_byte));
+
+#test memchr_test_7
+    s21_size_t n_byte = 5;
+    char str[10] = "aboba";
+    int find_byte = 'c';
+    ck_assert_ptr_eq(s21_memchr(str, find_byte, n_byte),
+                     memchr(str, find_byte, n_byte));
+
+#test memchr_test_8
+    char str[] = "Hello w\0orld\0";
+    ck_assert_pstr_eq(memchr(str, 'r', 5), s21_memchr(str, 'r', 5));
+
+
+#test memchr_test_9
+    char str2[] = "john.smith@microsoft.com";
+    ck_assert_pstr_eq(memchr(str2, 's', 6), s21_memchr(str2, 's', 6));
+
+
+#test memchr_test_10
+    char str3[] = {'q', 'r', 's', 't', 'w', '\0'};
+    ck_assert_pstr_eq(memchr(str3, 's', 5), s21_memchr(str3, 's', 5));

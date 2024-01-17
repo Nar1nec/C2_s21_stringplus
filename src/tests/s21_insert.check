@@ -1,0 +1,102 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "s21_string.h"
+
+// insert
+
+#test insertTest1
+    char src[15]="Hello, world!";
+    char str[10]=" Hello,";
+    s21_size_t index = 6;
+    char expected[30]="Hello, Hello, world!";
+    char *res = (char *)s21_insert(src, str, index);
+    ck_assert_pstr_eq(expected, res);
+    if (res) free(res);
+
+#test insertTest2
+    char src[15]="12345678";
+    char str[15]= "hello";
+    s21_size_t index = 8;
+    char expected[30] = "12345678hello";
+    char *res = (char *)s21_insert(src, str, index);
+    ck_assert_pstr_eq(expected, res);
+    if (res) free(res);
+
+#test insertTest3
+    char src[15]="123";
+    char str[15]= "hello";
+    s21_size_t index = 8;
+    char *expected = S21_NULL;
+    char *res = (char *)s21_insert(src, str, index);
+    ck_assert_pstr_eq(expected, res);
+    if (res) free(res);
+
+#test insertTest4
+    char src[15]="123";
+    char str[15]= "hello";
+    s21_size_t index = -1;
+    char *expected = S21_NULL;
+    char *res = (char *)s21_insert(src, str, index);
+    ck_assert_pstr_eq(expected, res);
+    if (res) free(res);
+
+#test insertTest5
+    char src[] = "Insert  Number 5";
+    char str[] = "Test";
+    s21_size_t index = 7;
+    char expected[] = "Insert Test Number 5";
+    char *res = (char *)s21_insert(src, str, index);
+    ck_assert_pstr_eq(res, expected);
+    if (res)
+        free(res);
+
+#test insertTest6
+    char str[] = "Hello, ";
+    char src[] = "world!";
+    s21_size_t index = 0;
+    char expected[] = "Hello, world!";
+    char *res = (char *)s21_insert(src, str, index);
+    ck_assert_pstr_eq(res, expected);
+    if (res)
+        free(res);
+
+#test insertTest7
+    char str[] = "";
+    char src[] = "";
+    s21_size_t index = 10;
+    char *expected = S21_NULL;
+    char *res = (char *)s21_insert(src, str, index);
+    ck_assert_pstr_eq(res, expected);
+    if (res)
+        free(res);
+
+#test insertTest8
+    char *src = S21_NULL;
+    char *str = S21_NULL;
+    s21_size_t index = 10;
+    char *expected = S21_NULL;
+    char *res = (char *)s21_insert(src, str, index);
+    ck_assert_ptr_eq(res, expected);
+    if (res)
+        free(res);
+
+#test insertTest9
+    char src[] = "Punk  ";
+    char *str = S21_NULL;
+    s21_size_t index = 0;
+    char expected[] = "Punk  ";
+    char *res = (char *)s21_insert(src, str, index);
+    ck_assert_pstr_eq(res, expected);
+    if (res)
+        free(res);
+
+#test insertTest10
+    char *src = S21_NULL;
+    char str[] = "Shrek";
+    char *expected = S21_NULL;
+    s21_size_t index = 2;
+    char *res = (char *)s21_insert(src, str, index);
+    ck_assert_pstr_eq(res, expected);
+    if (res)
+        free(res);

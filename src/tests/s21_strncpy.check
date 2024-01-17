@@ -1,0 +1,58 @@
+#include <check.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "s21_string.h"
+
+
+#test strncpy_test_1
+    s21_size_t n1 = 3;
+    char dest1[BUFF_SIZE] = "1111111111";
+    char dest2[BUFF_SIZE] = "1111111111";
+    char src[BUFF_SIZE] = "123\0";
+    ck_assert_pstr_eq(strncpy(dest1, src, n1), s21_strncpy(dest2, src, n1));
+
+
+#test strncpy_test_2
+    s21_size_t n2 = 5;
+    char dest1[BUFF_SIZE] = "1111111111";
+    char dest2[BUFF_SIZE] = "1111111111";
+    char src[BUFF_SIZE] = "12345\0006789";
+    ck_assert_pstr_eq(strncpy(dest1, src, n2), s21_strncpy(dest2, src, n2));
+
+
+#test strncpy_test_3
+    s21_size_t n3 = 5;
+    char dest1[BUFF_SIZE] = "11";
+    char dest2[BUFF_SIZE] = "11";
+    char src[BUFF_SIZE] = "12345\0006789";
+    ck_assert_pstr_eq(strncpy(dest1, src, n3), s21_strncpy(dest2, src, n3));
+
+#test strncpy_test_4
+    s21_size_t n3 = 0;
+    char dest1[BUFF_SIZE] = "";
+    char dest2[BUFF_SIZE] = "";
+    char src[BUFF_SIZE] = "1234";
+    ck_assert_pstr_eq(strncpy(dest1, src, n3), s21_strncpy(dest2, src, n3));
+
+#test strncpy_test_5
+    s21_size_t n3 = 0;
+    char dest1[BUFF_SIZE] = "";
+    char dest2[BUFF_SIZE] = "";
+    char src[BUFF_SIZE] = "";
+    ck_assert_pstr_eq(strncpy(dest1, src, n3), s21_strncpy(dest2, src, n3));
+
+#test strncpy_test_6
+    s21_size_t n3 = 4;
+    char dest1[BUFF_SIZE] = "1234567";
+    char dest2[BUFF_SIZE] = "1234567";
+    char src[BUFF_SIZE] = "\0";
+    ck_assert_pstr_eq(strncpy(dest1, src, n3), s21_strncpy(dest2, src, n3));
+
+
+#test strncpy_test_7
+    s21_size_t n3 = 1;
+    char dest1[BUFF_SIZE] = "1234";
+    char dest2[BUFF_SIZE] = "1234";
+    char src[BUFF_SIZE] = "1234";
+    ck_assert_pstr_eq(strncpy(dest1, src, n3), s21_strncpy(dest2, src, n3));

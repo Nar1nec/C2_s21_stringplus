@@ -1,0 +1,127 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "s21_string.h"
+
+// trim
+
+#test trimTest1
+    char src[30] = "!!!hello, world!?!";
+    char chars[] = "!?";
+    char expected[] = "hello, world";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest2
+    char src[30] = "hello, world!?!";
+    char chars[] = "!?";
+    char expected[] = "hello, world";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest3
+    char src[30] = "!!?!hello, world";
+    char chars[] = "!?";
+    char expected[] = "hello, world";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest4
+    char src[30] = "hello, world";
+    char chars[] = "123";
+    char expected[] = "hello, world";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest5
+    char src[10] = "";
+    char chars[] = "";
+    char expected[] = "";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest6
+    char src[10] = "";
+    char chars[] = "123{]we";
+    char expected[] = "";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest7
+    char src[30] = "!!?!hello, world";
+    char chars[] = ",";
+    char expected[] = "!!?!hello, world";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest8
+    char src[] = "&* !!s21 * **";
+    char chars[] = "&!* ";
+    char expected[] = "s21";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest9
+    char src[] = "    hello    ";
+    char chars[] = "";
+    char expected[] = "hello";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest10
+    char src[] = "    hello    ";
+    char *chars = S21_NULL;
+    char expected[] = "hello";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest11
+    char src[] = "    hello\n\n\n";
+    char chars[] = "\n";
+    char expected[] = "    hello";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest12
+    char src[] = "    hello\n\t\n";
+    char chars[] = "";
+    char expected[] = "hello";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest13
+    char src[] = "    hello\n\t\n";
+    char *chars = S21_NULL;
+    char expected[] = "hello";
+    char *s2 = s21_trim(src, chars);
+    ck_assert_str_eq(expected, s2);
+    if (s2) free(s2);
+
+#test trimTest14
+    char src[] = "+-qpiw8761].mk;23-=+ond!";
+    char trim_ch[] = "+-qpiw8761].mk;23-=+ond!";
+    char expected[] = "";
+    char *got = s21_trim(src, trim_ch);
+    ck_assert_str_eq(got, expected);
+    if (got)
+        free(got);
+
+#test trimTest15
+    char src[] = "!pq.8761]+mk;23-=wondi";
+    char trim_ch[] = "+-qpiw8761].mk;23-=+ond!";
+    char expected[] = "";
+    char *got = s21_trim(src, trim_ch);
+    ck_assert_str_eq(got, expected);
+    if (got) free(got);

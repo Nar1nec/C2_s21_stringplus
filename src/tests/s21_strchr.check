@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "s21_string.h"
+
+// strchr
+
+#test strchrTest1
+    char str[] = "Hello, world!";
+    int ch = '\0';
+    ck_assert_pstr_eq(strchr(str, ch), s21_strchr(str, ch));
+
+#test strchrTest2
+    char str[] = "Hello, world!";
+    int ch = 'h';
+    ck_assert_pstr_eq(strchr(str, ch), s21_strchr(str, ch));
+
+#test strchrTest3
+    char str[] = "Hello, world!";
+    int ch = 'H';
+    ck_assert_pstr_eq(strchr(str, ch), s21_strchr(str, ch));
+
+#test strchrTest4
+    char str[] = "Hello, world!";
+    int ch = 33;
+    ck_assert_pstr_eq(strchr(str, ch), s21_strchr(str, ch));
+
+#test strchrTest5
+    char str[] = "Hello, world!";
+    int ch = 35;
+    ck_assert_pstr_eq(strchr(str, ch), s21_strchr(str, ch));
+
+#test strchrTest6
+    char str[] = "Hello, world!";
+    int ch = 'T';
+    ck_assert_pstr_eq(strchr(str, ch), s21_strchr(str, ch));
+
+#test strchrTest7
+    char str[] = "Hello, world!";
+    int ch = '0';
+    ck_assert_pstr_eq(strchr(str, ch), s21_strchr(str, ch));
+
+#test strchrTest8
+    char str[] = "Hello, world!";
+    int ch = 'l';
+    ck_assert_pstr_eq(strchr(str, ch), s21_strchr(str, ch));
+
+#test strchrTest9
+    char str[] = "Hello, world!";
+    int ch = '\0';
+    ck_assert_pstr_eq(strchr(str, ch), s21_strchr(str, ch));
+
+#test strchrTest10
+    char str[] = "Hello,\0\0 world!";
+    int ch = '\0';
+    ck_assert_pstr_eq(strchr(str, ch), s21_strchr(str, ch));
